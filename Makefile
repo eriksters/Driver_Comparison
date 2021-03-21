@@ -51,8 +51,11 @@ LDFLAGS = $(MCU) -T$(LD) -Wl,-Map=$(OBJ_DIR)/Out.map,--cref -Wl,--gc-sections -O
 vpath %.c $(C_SOURCE_DIRS)
 vpath %.s $(ASM_SOURCE_DIRS)
 
-all: $(OBJ)
+all: $(OBJ_DIR) $(OBJ)
 	$(CC) $(LDFLAGS) -o $(OBJ_DIR)/Out.elf $(OBJ)
+
+$(OBJ_DIR): 
+	mkdir obj
 
 $(OBJ_DIR)/%.o: %.c
 	$(CC) $(CFLAGS) -o $@ $^
