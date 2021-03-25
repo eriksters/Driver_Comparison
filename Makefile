@@ -1,4 +1,4 @@
-SHELL=F:\Program Files\Git\bin\sh.exe
+SHELL=$(SHELL_DIR)\\sh.exe
 CC=arm-none-eabi-gcc
 
 ########	Files/Folders	########

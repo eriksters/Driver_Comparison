@@ -14,18 +14,15 @@ GetTime - returns the time in [smallest possible units]
 
 #include <stdint.h>
 
-typedef struct {
-    uint8_t init;
-    uint32_t tickCount;
-} Stopwatch_t;
 
-void init(Stopwatch_t* p_sw) {
-    p_sw->init = 1;
-    p_sw->tickCount = 0;
-}
+void stopwatch_init( void );
 
-void init(Stopwatch_t* p_sw) {
-    p_sw->init = 0;
-}
+void stopwatch_start( void );
+
+void stopwatch_stop( void );
+
+void stopwatch_reset( void );
+
+int stopwatch_get_time( void );
 
 #endif
