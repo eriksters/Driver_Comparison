@@ -38,7 +38,7 @@ static void TIM8_Init( void )
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
   htim8.Instance = TIM8;
-  htim8.Init.Prescaler = 10000;
+  htim8.Init.Prescaler = 1000;
   htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim8.Init.Period = 0xFFFF;
   htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
