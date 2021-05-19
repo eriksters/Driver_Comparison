@@ -42,9 +42,11 @@ C_DEFS = \
 -DSTM32F469xx \
 -DUSE_HAL_DRIVER
 
-CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections -c -O0 -g
-ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections -c -O0 -g 
-LDFLAGS = $(MCU) -T$(LD) -Wl,-Map=$(OBJ_DIR)/Out.map,--cref -Wl,--gc-sections -O0 -g
+OPTIMIZ=-Og
+
+CFLAGS = $(MCU) $(C_DEFS) $(C_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections -c $(OPTIMIZ) -g
+ASFLAGS = $(MCU) $(AS_DEFS) $(AS_INCLUDES) $(OPT) -Wall -fdata-sections -ffunction-sections -c $(OPTIMIZ) -g 
+LDFLAGS = $(MCU) -T$(LD) -Wl,-Map=$(OBJ_DIR)/Out.map,--cref -Wl,--gc-sections $(OPTIMIZ) -g
 
 
 ########	Rules	########

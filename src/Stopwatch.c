@@ -1,44 +1,47 @@
 #include "Stopwatch.h"
 #include "stm32f4xx_hal.h"
 
-static void TIM8_Init( void );
-extern void Error_Handler( void );
+static void TIM8_Init(void);
+extern void Error_Handler(void);
 
 TIM_HandleTypeDef htim8;
 
-
-void stopwatch_init( void ) {
-    TIM8_Init();
+void stopwatch_init(void)
+{
+  TIM8_Init();
 }
 
-void stopwatch_start( void ) {
+void stopwatch_start(void)
+{
   HAL_TIM_Base_Start(&htim8);
 }
 
-void stopwatch_stop( void ) {
+void stopwatch_stop(void)
+{
   HAL_TIM_Base_Stop(&htim8);
 }
 
-void stopwatch_reset( void ) {
+void stopwatch_reset(void)
+{
   __HAL_TIM_SET_COUNTER(&htim8, __HAL_TIM_GET_AUTORELOAD(&htim8));
 }
 
-int stopwatch_get_time( void ) {
+int stopwatch_get_time(void)
+{
   return __HAL_TIM_GET_COUNTER(&htim8);
 }
 
-static void TIM8_Init( void )
+static void TIM8_Init(void)
 {
 
   __HAL_RCC_TIM8_CLK_ENABLE();
-
 
   TIM_ClockConfigTypeDef sClockSourceConfig = {0};
   TIM_SlaveConfigTypeDef sSlaveConfig = {0};
   TIM_MasterConfigTypeDef sMasterConfig = {0};
 
   htim8.Instance = TIM8;
-  htim8.Init.Prescaler = 1000;
+  htim8.Init.Prescaler = 100;
   htim8.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim8.Init.Period = 0xFFFF;
   htim8.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
